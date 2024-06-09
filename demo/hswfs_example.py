@@ -35,6 +35,8 @@ if __name__ == "__main__":
     shifts = generate_test_shifts(test_case="defocus", grid_size=8)
     print("Done!", flush=True)
 
+    shifts[0,0,:]=np.nan
+
     # Set up a new HSWFS instance
     print("Setting up wavefront sensor...", end=" ", flush=True)
     sensor = HSWFS(relative_shifts=shifts)
@@ -96,6 +98,6 @@ if __name__ == "__main__":
 
     # Save the result
     plt.tight_layout()
-    plt.savefig("example_result.png", pad=0, dpi=300, bbox_inches="tight")
+    plt.savefig("example_result.png", dpi=300, bbox_inches="tight")
 
     print("Done!", flush=True)

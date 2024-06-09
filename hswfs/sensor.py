@@ -194,6 +194,11 @@ class HSWFS:
                 (x_derivatives.flatten(), y_derivatives.flatten())
             )
 
+        # Exclude nan from p vector and corresponding column from d
+        nanidx=np.where(np.isnan(p))
+        p=np.delete(p,nanidx)
+        d=np.delete(d,nanidx,1)
+
         # ---------------------------------------------------------------------
         # Find the Zernike coefficients by solving a linear equation system
         # ---------------------------------------------------------------------
