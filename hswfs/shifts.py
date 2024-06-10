@@ -181,7 +181,31 @@ def cut_to_circle(shifts):
 
   # Create mask for circle
   y, x = np.ogrid[:size, :size]
-  mask = (x - center[1])**2 + (y - center[0])**2 <= radius**2
+  mask = (x - center[1])**2 + (y - center[0])**2 < radius**2
 
   # Apply mask and fill outside with nan
   return np.where(mask[...,None], shifts, np.nan)
+
+def cut_out_circle(shifts, R):
+    """
+    Cuts out a circle from a ndarray(N, N, 2) and fills the inside with NaN.
+
+    Args:
+      shifts: A numpy array of shape (N, N, 2).
+      R: Ratio of radius to the size of numpy array shifts.
+
+    Returns:
+      A new numpy array with the same shape as shifts, where the inside of the circle
+      is filled with NaN.
+    """
+    size = shifts.shape[0]
+
+    center = (size / 2 - 0.5, size / 2 - 0.5)
+    radius = R * size
+
+    # Create mask for circle
+    y, x = np.ogrid[:size, :size]
+    mask = (x - center[1])**2 + (y - center[0])**2 > radius**2
+
+    # Apply mask and fill outside with nan
+    return np.where(mask[...,None], shifts, np.nan)
