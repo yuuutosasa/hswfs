@@ -162,3 +162,26 @@ def generate_test_shifts(
         )
 
     return shifts
+
+def cut_to_circle(shifts):
+  """
+  Cuts a circle from a ndarray(N, N, 2) and fills the outside with NaN.
+
+  Args:
+      shifts: A numpy array of shape (N, N, 2).
+
+  Returns:
+      A new numpy array with the same shape as shifts, where the outside of the circle
+      is filled with NaN.
+  """
+  size = shifts.shape[0]
+
+  center = (size / 2 - 0.5, size / 2 - 0.5)
+  radius = size / 2 
+
+  # Create mask for circle
+  y, x = np.ogrid[:size, :size]
+  mask = (x - center[1])**2 + (y - center[0])**2 <= radius**2
+
+  # Apply mask and fill outside with nan
+  return np.where(mask[...,None], shifts, np.nan)

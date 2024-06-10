@@ -53,9 +53,8 @@ def get_subaperture_centers(
 ) -> Tuple[np.ndarray, np.ndarray]:
     """
     Compute the positions of the centers of the subapertures of the
-    sensor. This assumes a simple geometry, where the sensor is taken
-    to be the largest square that can fit inside the unit circle, and
-    consists of a grid of `grid_size` x `grid_size` subapertures.
+    sensor. This assumes a simple geometry, and consists of a grid 
+    of `grid_size` x `grid_size` subapertures.
 
     Args:
         grid_size:  An integer specifying the size of the (quadratic)
@@ -67,9 +66,9 @@ def get_subaperture_centers(
     """
 
     x = np.linspace((1 / grid_size - 1), (1 - 1 / grid_size), grid_size)
-    x = 1 / np.sqrt(2) * np.repeat(x.reshape(1, -1), grid_size, axis=0)
+    x = np.repeat(x.reshape(1, -1), grid_size, axis=0)
     y = np.linspace((1 - 1 / grid_size), (1 / grid_size - 1), grid_size)
-    y = 1 / np.sqrt(2) * np.repeat(y.reshape(-1, 1), grid_size, axis=1)
+    y = np.repeat(y.reshape(-1, 1), grid_size, axis=1)
 
     return x, y
 
