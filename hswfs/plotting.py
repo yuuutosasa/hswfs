@@ -64,9 +64,9 @@ def plot_shifts(
     x, y = get_subaperture_centers(grid_size=grid_size)
 
     # Draw the grid of subapertures
-    for z in np.linspace(-1 / np.sqrt(2), 1 / np.sqrt(2), grid_size + 1):
-        ax.plot((z, z), (-1 / np.sqrt(2), 1 / np.sqrt(2)), color="black")
-        ax.plot((-1 / np.sqrt(2), 1 / np.sqrt(2)), (z, z), color="black")
+    for z in np.linspace(-1 , 1 , grid_size + 1):
+        ax.plot((z, z), (-1 , 1 ), color="black")
+        ax.plot((-1 , 1 ), (z, z), color="black")
 
     # Plot the centers of the subapertures
     ax.plot(x.flatten(), y.flatten(), "x", ms=4*8/grid_size, color="C2", alpha=0.5)
@@ -76,7 +76,7 @@ def plot_shifts(
 
     # Determine a shrinkage factor to map the relative shifts into the right
     # reference frame (i.e., scale to the size of a subaperture in the plot)
-    factor = np.sqrt(2) / grid_size / 2
+    factor = np.sqrt(2) * np.sqrt(2) / grid_size / 2
 
     # Plot the observed position for each subapertures, which differs from the
     # center of the subaperture by the given shift vector

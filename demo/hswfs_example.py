@@ -33,7 +33,7 @@ if __name__ == "__main__":
 
     # Create a set of shifts for a HSWFS with a grid size of 8x8
     print("Generating shifts...", end=" ", flush=True)
-    shifts = generate_test_shifts(test_case="defocus", grid_size=20)
+    shifts = generate_test_shifts(test_case="defocus", grid_size=15)
     shifts = cut_to_circle(shifts)
     print("Done!", flush=True)
 
