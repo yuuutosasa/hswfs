@@ -69,7 +69,7 @@ def plot_shifts(
         ax.plot((-1 / np.sqrt(2), 1 / np.sqrt(2)), (z, z), color="black")
 
     # Plot the centers of the subapertures
-    ax.plot(x.flatten(), y.flatten(), "x", ms=4, color="C2", alpha=0.5)
+    ax.plot(x.flatten(), y.flatten(), "x", ms=4*8/grid_size, color="C2", alpha=0.5)
 
     # Add a red circle indicating the unit disk
     ax.add_artist(plt.Circle((0, 0), 1, color="red", ls="--", fill=False))
@@ -84,6 +84,7 @@ def plot_shifts(
         x.flatten() + factor * relative_shifts[:, :, 0].flatten(),
         y.flatten() + factor * relative_shifts[:, :, 1].flatten(),
         ".",
+        ms=4*8*2/grid_size,
         color="C0",
     )
 
