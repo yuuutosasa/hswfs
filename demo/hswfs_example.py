@@ -17,6 +17,7 @@ from hswfs.plotting import plot_shifts, disable_ticks
 from hswfs.sensor import HSWFS
 from hswfs.shifts import generate_test_shifts
 from hswfs.shifts import cut_to_circle
+from hswfs.shifts import cut_out_circle
 from hswfs.utils import crop_center, get_unit_disk_meshgrid
 from hswfs.zernike import Wavefront, eval_cartesian
 
@@ -35,6 +36,7 @@ if __name__ == "__main__":
     print("Generating shifts...", end=" ", flush=True)
     shifts = generate_test_shifts(test_case="defocus", grid_size=15)
     shifts = cut_to_circle(shifts)
+    shifts = cut_out_circle(shifts, 0.15)
     print("Done!", flush=True)
 
     # Set up a new HSWFS instance
