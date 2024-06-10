@@ -37,8 +37,6 @@ if __name__ == "__main__":
     shifts = cut_to_circle(shifts)
     print("Done!", flush=True)
 
-    shifts[0,0,:]=np.nan
-
     # Set up a new HSWFS instance
     print("Setting up wavefront sensor...", end=" ", flush=True)
     sensor = HSWFS(relative_shifts=shifts)
