@@ -19,6 +19,7 @@ import numpy as np
 # FUNCTION DEFINITIONS
 # -----------------------------------------------------------------------------
 
+
 def generate_random_shifts(
     grid_size: int = 16,
     smooth_std: Optional[float] = None,
@@ -130,14 +131,13 @@ def generate_test_shifts(
     shifts = np.zeros((grid_size, grid_size, 2))
 
     #
-    if test_case == 'x_shift':
+    if test_case == "x_shift":
         shifts[:, :, 0] = 0.5
 
-    elif test_case == 'y_shift':
+    elif test_case == "y_shift":
         shifts[:, :, 1] = 0.5
 
-    elif test_case == 'defocus':
-
+    elif test_case == "defocus":
         # Compute the sign of the x- and y-shift for each subapertures
         col, row = np.meshgrid(np.arange(grid_size), np.arange(grid_size))
         x_sign = np.sign((col + 0.5) - grid_size / 2)
@@ -157,34 +157,36 @@ def generate_test_shifts(
     # Raise an error for all other values of
     else:
         raise ValueError(
-            'test_case must be one of the following: '
+            "test_case must be one of the following: "
             '"x_shift", "y_shift", "defocus"!'
         )
 
     return shifts
 
+
 def cut_to_circle(shifts):
-  """
-  Cuts a circle from a ndarray(N, N, 2) and fills the outside with NaN.
+    """
+    Cuts a circle from a ndarray(N, N, 2) and fills the outside with NaN.
 
-  Args:
-      shifts: A numpy array of shape (N, N, 2).
+    Args:
+        shifts: A numpy array of shape (N, N, 2).
 
-  Returns:
-      A new numpy array with the same shape as shifts, where the outside of the circle
-      is filled with NaN.
-  """
-  size = shifts.shape[0]
+    Returns:
+        A new numpy array with the same shape as shifts, where the outside of the circle
+        is filled with NaN.
+    """
+    size = shifts.shape[0]
 
-  center = (size / 2 - 0.5, size / 2 - 0.5)
-  radius = size / 2 
+    center = (size / 2 - 0.5, size / 2 - 0.5)
+    radius = size / 2
 
-  # Create mask for circle
-  y, x = np.ogrid[:size, :size]
-  mask = (x - center[1])**2 + (y - center[0])**2 < radius**2
+    # Create mask for circle
+    y, x = np.ogrid[:size, :size]
+    mask = (x - center[1]) ** 2 + (y - center[0]) ** 2 < radius**2
 
-  # Apply mask and fill outside with nan
-  return np.where(mask[...,None], shifts, np.nan)
+    # Apply mask and fill outside with nan
+    return np.where(mask[..., None], shifts, np.nan)
+
 
 def cut_out_circle(shifts, R):
     """
@@ -205,7 +207,7 @@ def cut_out_circle(shifts, R):
 
     # Create mask for circle
     y, x = np.ogrid[:size, :size]
-    mask = (x - center[1])**2 + (y - center[0])**2 > radius**2
+    mask = (x - center[1]) ** 2 + (y - center[0]) ** 2 > radius**2
 
     # Apply mask and fill outside with nan
-    return np.where(mask[...,None], shifts, np.nan)
+    return np.where(mask[..., None], shifts, np.nan)

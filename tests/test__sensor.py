@@ -16,10 +16,9 @@ from hswfs.shifts import generate_test_shifts
 # TEST CASES
 # -----------------------------------------------------------------------------
 
-def test__x_shift() -> None:
 
-    shifts = generate_test_shifts(test_case='x_shift',
-                                  grid_size=8)
+def test__x_shift() -> None:
+    shifts = generate_test_shifts(test_case="x_shift", grid_size=8)
     sensor = HSWFS(relative_shifts=shifts)
 
     coefficients = sensor.fit_wavefront(n_zernike=9)
@@ -29,9 +28,7 @@ def test__x_shift() -> None:
 
 
 def test__y_shift() -> None:
-
-    shifts = generate_test_shifts(test_case='y_shift',
-                                  grid_size=8)
+    shifts = generate_test_shifts(test_case="y_shift", grid_size=8)
     sensor = HSWFS(relative_shifts=shifts)
 
     coefficients = sensor.fit_wavefront(n_zernike=9)
@@ -41,9 +38,7 @@ def test__y_shift() -> None:
 
 
 def test__defocus() -> None:
-
-    shifts = generate_test_shifts(test_case='defocus',
-                                  grid_size=8)
+    shifts = generate_test_shifts(test_case="defocus", grid_size=8)
     sensor = HSWFS(relative_shifts=shifts)
 
     coefficients = sensor.fit_wavefront(n_zernike=9)

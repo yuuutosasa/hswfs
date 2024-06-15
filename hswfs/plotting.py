@@ -18,6 +18,7 @@ from hswfs.utils import get_subaperture_centers
 # FUNCTION DEFINITIONS
 # -----------------------------------------------------------------------------
 
+
 def disable_ticks(
     ax: Any,
 ) -> None:
@@ -64,12 +65,12 @@ def plot_shifts(
     x, y = get_subaperture_centers(grid_size=grid_size)
 
     # Draw the grid of subapertures
-    for z in np.linspace(-1 , 1 , grid_size + 1):
-        ax.plot((z, z), (-1 , 1 ), color="black")
-        ax.plot((-1 , 1 ), (z, z), color="black")
+    for z in np.linspace(-1, 1, grid_size + 1):
+        ax.plot((z, z), (-1, 1), color="black")
+        ax.plot((-1, 1), (z, z), color="black")
 
     # Plot the centers of the subapertures
-    ax.plot(x.flatten(), y.flatten(), "x", ms=4*8/grid_size, color="C2", alpha=0.5)
+    ax.plot(x.flatten(), y.flatten(), "x", ms=4 * 8 / grid_size, color="C2", alpha=0.5)
 
     # Add a red circle indicating the unit disk
     ax.add_artist(plt.Circle((0, 0), 1, color="red", ls="--", fill=False))
@@ -84,7 +85,7 @@ def plot_shifts(
         x.flatten() + factor * relative_shifts[:, :, 0].flatten(),
         y.flatten() + factor * relative_shifts[:, :, 1].flatten(),
         ".",
-        ms=4*8*2/grid_size,
+        ms=4 * 8 * 2 / grid_size,
         color="C0",
     )
 

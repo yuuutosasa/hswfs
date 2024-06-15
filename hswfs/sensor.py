@@ -25,6 +25,7 @@ from hswfs.fast_zernike import zernike_derivative_cartesian
 # CLASS DEFINITIONS
 # -----------------------------------------------------------------------------
 
+
 class HSWFS:
     """
     A virtual Hartmann-Shack wavefront sensor.
@@ -43,7 +44,6 @@ class HSWFS:
         relative_shifts: np.ndarray,
         aperture_size: int = 32,
     ) -> None:
-
         # Store constructor arguments
         self.relative_shifts = relative_shifts
         self.aperture_size = aperture_size
@@ -165,7 +165,6 @@ class HSWFS:
         # We compute the entries of D row by row, because rows correspond to
         # Zernike polynomials
         for row_idx, j in enumerate(range(1, n_zernike + 1)):
-
             # Map single-index j to double-indices m, n
             m, n = j_to_mn(j)
 
@@ -174,12 +173,8 @@ class HSWFS:
             # module. For even higher orders, the derivatives first need to be
             # computed "on demand", which is a lot slower.
             if j <= 135:
-                x_derivatives = zernike_derivative_cartesian(
-                    m, n, x_0, y_0, "x"
-                )
-                y_derivatives = zernike_derivative_cartesian(
-                    m, n, x_0, y_0, "y"
-                )
+                x_derivatives = zernike_derivative_cartesian(m, n, x_0, y_0, "x")
+                y_derivatives = zernike_derivative_cartesian(m, n, x_0, y_0, "y")
             else:
                 zernike_polynomial = ZernikePolynomial(m=m, n=n).cartesian
                 x_derivatives = eval_cartesian(
@@ -195,9 +190,9 @@ class HSWFS:
             )
 
         # Exclude nan from p vector and corresponding column from d
-        nanidx=np.where(np.isnan(p))
-        p=np.delete(p,nanidx)
-        d=np.delete(d,nanidx,1)
+        nanidx = np.where(np.isnan(p))
+        p = np.delete(p, nanidx)
+        d = np.delete(d, nanidx, 1)
 
         # ---------------------------------------------------------------------
         # Find the Zernike coefficients by solving a linear equation system
@@ -263,9 +258,7 @@ class HSWFS:
 
         # Compute the wavefront on a grid of the given resolution, and cast
         # np.nan to 0, because the FFT cannot deal with NaN
-        wf_grid = eval_cartesian(
-            expression=wavefront.cartesian, x_0=x_0, y_0=y_0
-        )
+        wf_grid = eval_cartesian(expression=wavefront.cartesian, x_0=x_0, y_0=y_0)
         wf_grid = np.nan_to_num(wf_grid)
 
         # Compute the pupil function. In our simple case, this is simply the

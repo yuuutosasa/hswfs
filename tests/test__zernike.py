@@ -15,8 +15,8 @@ from hswfs.zernike import mn_to_j, j_to_mn, ZernikePolynomial, derive
 # TEST CASES
 # -----------------------------------------------------------------------------
 
-def test__mn_to_j() -> None:
 
+def test__mn_to_j() -> None:
     assert mn_to_j(0, 0) == 0
     assert mn_to_j(-1, 1) == 1
     assert mn_to_j(1, 1) == 2
@@ -30,7 +30,6 @@ def test__mn_to_j() -> None:
 
 
 def test__j_mn_to() -> None:
-
     assert j_to_mn(0) == (0, 0)
     assert j_to_mn(1) == (-1, 1)
     assert j_to_mn(2) == (1, 1)
@@ -44,8 +43,7 @@ def test__j_mn_to() -> None:
 
 
 def test__radial_polynomial() -> None:
-
-    rho = sy.symbols('rho')
+    rho = sy.symbols("rho")
 
     # -------------------------------------------------------------------------
     # Trivial case: n - m is odd
@@ -85,8 +83,7 @@ def test__radial_polynomial() -> None:
 
 
 def test__zernike_polynomial() -> None:
-
-    rho, phi = sy.symbols('rho, phi')
+    rho, phi = sy.symbols("rho, phi")
 
     # -------------------------------------------------------------------------
     # Test first 10 Zernike polynomials
@@ -135,59 +132,77 @@ def test__zernike_polynomial() -> None:
     # Extra case to make sure we don't get complex infinities that break the
     # derivatives. See https://github.com/timothygebhard/hswfs/issues/1.
     zernike = ZernikePolynomial(m=-5, n=5)
-    derivative = derive(zernike.cartesian, wrt='x')
+    derivative = derive(zernike.cartesian, wrt="x")
     assert derivative != 0
 
 
 def test__zernike_fourier_transform() -> None:
-
-    k1, k2 = sy.symbols('k1, k2')
+    k1, k2 = sy.symbols("k1, k2")
 
     zernike = ZernikePolynomial(m=0, n=0)
     expected = sy.besselj(2 * sy.pi * k1, 1) / (sy.pi * k1)
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=-1, n=1)
-    expected = (-2 * sy.I * sy.besselj(2 * sy.pi * k1, 2) *
-                sy.sin(k2) / (sy.pi * k1))
+    expected = -2 * sy.I * sy.besselj(2 * sy.pi * k1, 2) * sy.sin(k2) / (sy.pi * k1)
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=1, n=1)
-    expected = (-2 * sy.I * sy.besselj(2 * sy.pi * k1, 2) *
-                sy.cos(k2) / (sy.pi * k1))
+    expected = -2 * sy.I * sy.besselj(2 * sy.pi * k1, 2) * sy.cos(k2) / (sy.pi * k1)
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=-2, n=2)
-    expected = (-sy.sqrt(6) * sy.besselj(2 * sy.pi * k1, 3) *
-                sy.sin(2 * k2) / (sy.pi * k1))
+    expected = (
+        -sy.sqrt(6) * sy.besselj(2 * sy.pi * k1, 3) * sy.sin(2 * k2) / (sy.pi * k1)
+    )
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=0, n=2)
-    expected = (-sy.sqrt(3) * sy.besselj(2 * sy.pi * k1, 3) *
-                1 / (sy.pi * k1))
+    expected = -sy.sqrt(3) * sy.besselj(2 * sy.pi * k1, 3) * 1 / (sy.pi * k1)
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=2, n=2)
-    expected = (-sy.sqrt(6) * sy.besselj(2 * sy.pi * k1, 3) *
-                sy.cos(2 * k2) / (sy.pi * k1))
+    expected = (
+        -sy.sqrt(6) * sy.besselj(2 * sy.pi * k1, 3) * sy.cos(2 * k2) / (sy.pi * k1)
+    )
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=-3, n=3)
-    expected = (sy.sqrt(8) * sy.I * sy.besselj(2 * sy.pi * k1, 4) *
-                sy.sin(3 * k2) / (sy.pi * k1))
+    expected = (
+        sy.sqrt(8)
+        * sy.I
+        * sy.besselj(2 * sy.pi * k1, 4)
+        * sy.sin(3 * k2)
+        / (sy.pi * k1)
+    )
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=-1, n=3)
-    expected = (sy.sqrt(8) * sy.I * sy.besselj(2 * sy.pi * k1, 4) *
-                sy.sin(1 * k2) / (sy.pi * k1))
+    expected = (
+        sy.sqrt(8)
+        * sy.I
+        * sy.besselj(2 * sy.pi * k1, 4)
+        * sy.sin(1 * k2)
+        / (sy.pi * k1)
+    )
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=1, n=3)
-    expected = (sy.sqrt(8) * sy.I * sy.besselj(2 * sy.pi * k1, 4) *
-                sy.cos(1 * k2) / (sy.pi * k1))
+    expected = (
+        sy.sqrt(8)
+        * sy.I
+        * sy.besselj(2 * sy.pi * k1, 4)
+        * sy.cos(1 * k2)
+        / (sy.pi * k1)
+    )
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=3, n=3)
-    expected = (sy.sqrt(8) * sy.I * sy.besselj(2 * sy.pi * k1, 4) *
-                sy.cos(3 * k2) / (sy.pi * k1))
+    expected = (
+        sy.sqrt(8)
+        * sy.I
+        * sy.besselj(2 * sy.pi * k1, 4)
+        * sy.cos(3 * k2)
+        / (sy.pi * k1)
+    )
     assert sy.simplify(zernike.fourier_transform - expected) == 0

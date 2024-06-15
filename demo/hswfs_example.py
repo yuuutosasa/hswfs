@@ -27,12 +27,11 @@ from hswfs.zernike import Wavefront, eval_cartesian
 # -----------------------------------------------------------------------------
 
 if __name__ == "__main__":
-
     # -------------------------------------------------------------------------
     # Set up virtual wavefront sensor, fit wavefront and compute PSF
     # -------------------------------------------------------------------------
 
-    # Create a set of shifts for a HSWFS with a grid size of 15x15 then cut 
+    # Create a set of shifts for a HSWFS with a grid size of 15x15 then cut
     # into circle
     print("Generating shifts...", end=" ", flush=True)
     shifts = generate_test_shifts(test_case="defocus", grid_size=15)

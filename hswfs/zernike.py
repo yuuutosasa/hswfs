@@ -18,6 +18,7 @@ import sympy as sy
 # AUXILIARY FUNCTIONS
 # -----------------------------------------------------------------------------
 
+
 def mn_to_j(m: int, n: int) -> int:
     r"""
     Map the indices :math:`m, n` from the double-indexing scheme to
@@ -206,9 +207,7 @@ def eval_cartesian(
     """
 
     # Make sure that expression is a function of Cartesian coordinates
-    assert is_cartesian(
-        expression
-    ), '"expression" is not in Cartesian coordinates!'
+    assert is_cartesian(expression), '"expression" is not in Cartesian coordinates!'
 
     # Make sure that x_0 and y_0 have compatible shapes
     assert (isinstance(x_0, float) and isinstance(y_0, float)) or (
@@ -224,10 +223,7 @@ def eval_cartesian(
     # generate a numpy version of the expression, which can be used to
     # evaluate the function efficiently:
     if not expression.is_constant():
-
-        numpy_func: Callable[
-            ..., Union[float, np.ndarray]
-        ] = sy.utilities.lambdify(
+        numpy_func: Callable[..., Union[float, np.ndarray]] = sy.utilities.lambdify(
             args=sy.symbols("x, y"), expr=expression, modules="numpy"
         )
 
@@ -235,7 +231,6 @@ def eval_cartesian(
     # the evaluation function manually because the result of sympy.lambdify()
     # does not behave as desired (it does not vectorize properly).
     else:
-
         # The multiplication with _ / _ makes sure that everything that is NaN
         # in the input also is NaN in the output; non-NaN values are unchanged
         def numpy_func(_: float, __: float) -> float:
@@ -250,6 +245,7 @@ def eval_cartesian(
 # CLASSES
 # -----------------------------------------------------------------------------
 
+
 class ZernikePolynomial:
     """
     Implements the Zernike polynomial :math:`Z^m_n` (in double-index
@@ -262,7 +258,6 @@ class ZernikePolynomial:
         n: Optional[int] = None,
         j: Optional[int] = None,
     ):
-
         # Make sure that we have received *either* (m, n) *or* j
         error_msg = (
             "ZernikePolynomial must be instantiated either with "
@@ -318,9 +313,7 @@ class ZernikePolynomial:
             result = sum(
                 sy.Pow(-1, k)
                 * sy.binomial(int(self.n - k), int(k))
-                * sy.binomial(
-                    int(self.n - 2 * k), int((self.n - self.m) / 2 - k)
-                )
+                * sy.binomial(int(self.n - 2 * k), int((self.n - self.m) / 2 - k))
                 * sy.Pow(rho, self.n - 2 * k)
                 for k in range(0, int((self.n - self.m) / 2) + 1)
             )
@@ -400,9 +393,7 @@ class ZernikePolynomial:
             The Zernike polynomial :math:`Z^m_n(\rho, \phi)`.
         """
 
-        result: sy.Expr = (
-            self.normalization * self.radial_part * self.azimuthal_part
-        )
+        result: sy.Expr = self.normalization * self.radial_part * self.azimuthal_part
         return result
 
     @property
@@ -484,7 +475,13 @@ class Wavefront:
                entry of the sequence will be used as the weight for the
                :math:`j`-th Zernike polynomial. That means:
 
-               >>> coefficients = [0, 1, 2, 0, 4]
+               >>> coefficients = [
+               ...     0,
+               ...     1,
+               ...     2,
+               ...     0,
+               ...     4,
+               ... ]
 
                will produce the following wavefront:
 
@@ -495,7 +492,11 @@ class Wavefront:
                To reproduce the previous example, we could therefore
                also write:
 
-               >>> coefficients = {1: 1, 2: 2, 4: 4}
+               >>> coefficients = {
+               ...     1: 1,
+               ...     2: 2,
+               ...     4: 4,
+               ... }
 
             Note that there is per se no limit of the number of Zernike
             polynomials that can be used for a wavefront; however,
@@ -503,7 +504,6 @@ class Wavefront:
     """
 
     def __init__(self, coefficients: Union[Sequence[float], Dict[int, float]]):
-
         # Store constructor arguments
         self.coefficients = coefficients
 

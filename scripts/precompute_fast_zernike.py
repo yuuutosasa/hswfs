@@ -19,7 +19,6 @@ from hswfs.zernike import j_to_mn, ZernikePolynomial, derive
 # -----------------------------------------------------------------------------
 
 if __name__ == "__main__":
-
     # Define file header, with docstring, imports, function signature, ...
     lines = [
         '"""',
@@ -73,14 +72,12 @@ if __name__ == "__main__":
     # to the function body
     print("Pre-computing derivatives of Zernike polynomials:", flush=True)
     for j in tqdm(range(136)):
-
         # Compute double indices from single index
         m, n = j_to_mn(j)
 
         # Loop over derivatives in x- and y-direction
         entry = f"\n    # Derivatives for j = {j}\n"
         for wrt in ("x", "y"):
-
             # Compute the derivative as a sympy expression
             derivative = derive(ZernikePolynomial(m=m, n=n).cartesian, wrt=wrt)
             derivative = sy.nsimplify(sy.simplify(derivative))
@@ -111,9 +108,9 @@ if __name__ == "__main__":
     # Raise value error if the function is called with wrong arguments
     lines += [
         "    # Raise value error if we have not returned yet",
-        '    raise ValueError('
+        "    raise ValueError("
         '        "No pre-computed derivative available for given arguments!"'
-        '    )',
+        "    )",
         "",
     ]
 

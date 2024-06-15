@@ -15,6 +15,7 @@ import numpy as np
 # FUNCTION DEFINITIONS
 # -----------------------------------------------------------------------------
 
+
 def crop_center(array: np.ndarray, size: Tuple[int, ...]) -> np.ndarray:
     """
     Crop an n-dimensional array to the given size around its center.
@@ -30,14 +31,11 @@ def crop_center(array: np.ndarray, size: Tuple[int, ...]) -> np.ndarray:
 
     # Ensure that the the array shape and the size variable match
     if array.ndim != len(size):
-        raise RuntimeError(
-            "Length of size must match number of dimensions of array!"
-        )
+        raise RuntimeError("Length of size must match number of dimensions of array!")
 
     # Loop over the the axes of the array to create slices
     slices = list()
     for old_len, new_len in zip(array.shape, size):
-
         # Compute start and end position for axis
         start = old_len // 2 - new_len // 2 if new_len != -1 else None
         end = start + new_len if start is not None else None
@@ -53,7 +51,7 @@ def get_subaperture_centers(
 ) -> Tuple[np.ndarray, np.ndarray]:
     """
     Compute the positions of the centers of the subapertures of the
-    sensor. This assumes a simple geometry, and consists of a grid 
+    sensor. This assumes a simple geometry, and consists of a grid
     of `grid_size` x `grid_size` subapertures.
 
     Args:

@@ -18,7 +18,6 @@ from hswfs.zernike import eval_cartesian, ZernikePolynomial
 # -----------------------------------------------------------------------------
 
 if __name__ == "__main__":
-
     # Define the maximum value of n
     n_max = 4
 
@@ -28,7 +27,6 @@ if __name__ == "__main__":
     # Loop over the indices m and n of the Zernike polynomials
     for row, n in enumerate(range(0, n_max + 1)):
         for col, m in enumerate(range(-n, n + 1, 2)):
-
             print(f"Running for Z^{m}_{n}...", end=" ", flush=True)
 
             # Create new Zernike polynomial
@@ -47,9 +45,7 @@ if __name__ == "__main__":
             limit = np.nanmax(np.abs(img))
 
             # Actually plot the Zernike polynomial
-            ax.imshow(
-                img, origin="lower", cmap="RdBu_r", vmin=-limit, vmax=limit
-            )
+            ax.imshow(img, origin="lower", cmap="RdBu_r", vmin=-limit, vmax=limit)
 
             # Add plot options (title, disable ticks etc.)
             ax.set_title(rf"$Z^{{{m}}}_{{{n}}}$", fontsize=4, pad=4)
