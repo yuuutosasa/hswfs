@@ -85,7 +85,7 @@ def plot_shifts(
         x.flatten() + factor * relative_shifts[:, :, 0].flatten(),
         y.flatten() + factor * relative_shifts[:, :, 1].flatten(),
         ".",
-        ms=4 * 8 * 2 / grid_size,
+        ms=4 * 8 / grid_size,
         color="C0",
     )
 
