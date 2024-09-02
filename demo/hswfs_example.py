@@ -15,9 +15,11 @@ import numpy as np
 
 from hswfs.plotting import plot_shifts, disable_ticks
 from hswfs.sensor import HSWFS
-from hswfs.shifts import generate_test_shifts
-from hswfs.shifts import cut_to_circle
-from hswfs.shifts import cut_out_circle
+from hswfs.shifts import (
+    cut_out_circle,
+    cut_to_circle,
+    generate_test_shifts,
+)
 from hswfs.utils import crop_center, get_unit_disk_meshgrid
 from hswfs.zernike import Wavefront, eval_cartesian
 
