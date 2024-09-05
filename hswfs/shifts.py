@@ -206,7 +206,7 @@ def cut_out_circle(
     size = shifts.shape[0]
 
     center = (size / 2 - 0.5, size / 2 - 0.5)
-    radius = ratio * size
+    radius = ratio * size / 2
 
     # Create mask for circle
     y, x = np.ogrid[:size, :size]
