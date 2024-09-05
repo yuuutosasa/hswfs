@@ -9,9 +9,11 @@ Unit tests for functions in sensor.py
 import numpy as np
 
 from hswfs.sensor import HSWFS
-from hswfs.shifts import generate_test_shifts
-from hswfs.shifts import cut_to_circle
-from hswfs.shifts import cut_out_circle
+from hswfs.shifts import (
+    generate_test_shifts,
+    cut_to_circle,
+    cut_out_circle
+)
 
 
 # -----------------------------------------------------------------------------
