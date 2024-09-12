@@ -144,16 +144,23 @@ def test__zernike_fourier_transform() -> None:
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=-1, n=1)
-    expected = -2 * sy.I * sy.besselj(2 * sy.pi * k1, 2) * sy.sin(k2) / (sy.pi * k1)
+    expected = (
+        -2 * sy.I * sy.besselj(2 * sy.pi * k1, 2) * sy.sin(k2) / (sy.pi * k1)
+    )
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=1, n=1)
-    expected = -2 * sy.I * sy.besselj(2 * sy.pi * k1, 2) * sy.cos(k2) / (sy.pi * k1)
+    expected = (
+        -2 * sy.I * sy.besselj(2 * sy.pi * k1, 2) * sy.cos(k2) / (sy.pi * k1)
+    )
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
     zernike = ZernikePolynomial(m=-2, n=2)
     expected = (
-        -sy.sqrt(6) * sy.besselj(2 * sy.pi * k1, 3) * sy.sin(2 * k2) / (sy.pi * k1)
+        -sy.sqrt(6)
+        * sy.besselj(2 * sy.pi * k1, 3)
+        * sy.sin(2 * k2)
+        / (sy.pi * k1)
     )
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 
@@ -163,7 +170,10 @@ def test__zernike_fourier_transform() -> None:
 
     zernike = ZernikePolynomial(m=2, n=2)
     expected = (
-        -sy.sqrt(6) * sy.besselj(2 * sy.pi * k1, 3) * sy.cos(2 * k2) / (sy.pi * k1)
+        -sy.sqrt(6)
+        * sy.besselj(2 * sy.pi * k1, 3)
+        * sy.cos(2 * k2)
+        / (sy.pi * k1)
     )
     assert sy.simplify(zernike.fourier_transform - expected) == 0
 

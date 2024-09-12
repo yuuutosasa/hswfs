@@ -45,7 +45,9 @@ if __name__ == "__main__":
             limit = np.nanmax(np.abs(img))
 
             # Actually plot the Zernike polynomial
-            ax.imshow(img, origin="lower", cmap="RdBu_r", vmin=-limit, vmax=limit)
+            ax.imshow(
+                img, origin="lower", cmap="RdBu_r", vmin=-limit, vmax=limit
+            )
 
             # Add plot options (title, disable ticks etc.)
             ax.set_title(rf"$Z^{{{m}}}_{{{n}}}$", fontsize=4, pad=4)

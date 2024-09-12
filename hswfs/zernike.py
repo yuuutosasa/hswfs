@@ -207,7 +207,9 @@ def eval_cartesian(
     """
 
     # Make sure that expression is a function of Cartesian coordinates
-    assert is_cartesian(expression), '"expression" is not in Cartesian coordinates!'
+    assert is_cartesian(
+        expression
+    ), '"expression" is not in Cartesian coordinates!'
 
     # Make sure that x_0 and y_0 have compatible shapes
     assert (isinstance(x_0, float) and isinstance(y_0, float)) or (
@@ -223,8 +225,10 @@ def eval_cartesian(
     # generate a numpy version of the expression, which can be used to
     # evaluate the function efficiently:
     if not expression.is_constant():
-        numpy_func: Callable[..., Union[float, np.ndarray]] = sy.utilities.lambdify(
-            args=sy.symbols("x, y"), expr=expression, modules="numpy"
+        numpy_func: Callable[..., Union[float, np.ndarray]] = (
+            sy.utilities.lambdify(
+                args=sy.symbols("x, y"), expr=expression, modules="numpy"
+            )
         )
 
     # Otherwise, that is, if the expression is constant, we need to define
@@ -313,7 +317,9 @@ class ZernikePolynomial:
             result = sum(
                 sy.Pow(-1, k)
                 * sy.binomial(int(self.n - k), int(k))
-                * sy.binomial(int(self.n - 2 * k), int((self.n - self.m) / 2 - k))
+                * sy.binomial(
+                    int(self.n - 2 * k), int((self.n - self.m) / 2 - k)
+                )
                 * sy.Pow(rho, self.n - 2 * k)
                 for k in range(0, int((self.n - self.m) / 2) + 1)
             )
@@ -393,7 +399,9 @@ class ZernikePolynomial:
             The Zernike polynomial :math:`Z^m_n(\rho, \phi)`.
         """
 
-        result: sy.Expr = self.normalization * self.radial_part * self.azimuthal_part
+        result: sy.Expr = (
+            self.normalization * self.radial_part * self.azimuthal_part
+        )
         return result
 
     @property

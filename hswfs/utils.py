@@ -31,7 +31,9 @@ def crop_center(array: np.ndarray, size: Tuple[int, ...]) -> np.ndarray:
 
     # Ensure that the the array shape and the size variable match
     if array.ndim != len(size):
-        raise RuntimeError("Length of size must match number of dimensions of array!")
+        raise RuntimeError(
+            "Length of size must match number of dimensions of array!"
+        )
 
     # Loop over the the axes of the array to create slices
     slices = list()

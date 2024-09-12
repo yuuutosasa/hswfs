@@ -173,8 +173,12 @@ class HSWFS:
             # module. For even higher orders, the derivatives first need to be
             # computed "on demand", which is a lot slower.
             if j <= 135:
-                x_derivatives = zernike_derivative_cartesian(m, n, x_0, y_0, "x")
-                y_derivatives = zernike_derivative_cartesian(m, n, x_0, y_0, "y")
+                x_derivatives = zernike_derivative_cartesian(
+                    m, n, x_0, y_0, "x"
+                )
+                y_derivatives = zernike_derivative_cartesian(
+                    m, n, x_0, y_0, "y"
+                )
             else:
                 zernike_polynomial = ZernikePolynomial(m=m, n=n).cartesian
                 x_derivatives = eval_cartesian(
@@ -258,7 +262,9 @@ class HSWFS:
 
         # Compute the wavefront on a grid of the given resolution, and cast
         # np.nan to 0, because the FFT cannot deal with NaN
-        wf_grid = eval_cartesian(expression=wavefront.cartesian, x_0=x_0, y_0=y_0)
+        wf_grid = eval_cartesian(
+            expression=wavefront.cartesian, x_0=x_0, y_0=y_0
+        )
         wf_grid = np.nan_to_num(wf_grid)
 
         # Compute the pupil function. In our simple case, this is simply the

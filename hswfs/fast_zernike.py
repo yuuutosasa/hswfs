@@ -204,13 +204,23 @@ def zernike_derivative_cartesian(
         return 16 * sqrt(3) * x * y * (5 * x**2 + 5 * y**2 - 3)
     if m == -1 and n == 5 and wrt == "y":
         return sqrt(3) * (
-            20 * x**4 + 120 * x**2 * y**2 - 24 * x**2 + 100 * y**4 - 72 * y**2 + 6
+            20 * x**4
+            + 120 * x**2 * y**2
+            - 24 * x**2
+            + 100 * y**4
+            - 72 * y**2
+            + 6
         )
 
     # Derivatives for j = 18
     if m == 1 and n == 5 and wrt == "x":
         return sqrt(3) * (
-            100 * x**4 + 120 * x**2 * y**2 - 72 * x**2 + 20 * y**4 - 24 * y**2 + 6
+            100 * x**4
+            + 120 * x**2 * y**2
+            - 72 * x**2
+            + 20 * y**4
+            - 24 * y**2
+            + 6
         )
     if m == 1 and n == 5 and wrt == "y":
         return 16 * sqrt(3) * x * y * (5 * x**2 + 5 * y**2 - 3)
@@ -271,21 +281,45 @@ def zernike_derivative_cartesian(
             2
             * sqrt(14)
             * y
-            * (75 * x**4 + 90 * x**2 * y**2 - 60 * x**2 + 15 * y**4 - 20 * y**2 + 6)
+            * (
+                75 * x**4
+                + 90 * x**2 * y**2
+                - 60 * x**2
+                + 15 * y**4
+                - 20 * y**2
+                + 6
+            )
         )
     if m == -2 and n == 6 and wrt == "y":
         return (
             2
             * sqrt(14)
             * x
-            * (15 * x**4 + 90 * x**2 * y**2 - 20 * x**2 + 75 * y**4 - 60 * y**2 + 6)
+            * (
+                15 * x**4
+                + 90 * x**2 * y**2
+                - 20 * x**2
+                + 75 * y**4
+                - 60 * y**2
+                + 6
+            )
         )
 
     # Derivatives for j = 24
     if m == 0 and n == 6 and wrt == "x":
-        return 24 * sqrt(7) * x * (-5 * x**2 - 5 * y**2 + 5 * (x**2 + y**2) ** 2 + 1)
+        return (
+            24
+            * sqrt(7)
+            * x
+            * (-5 * x**2 - 5 * y**2 + 5 * (x**2 + y**2) ** 2 + 1)
+        )
     if m == 0 and n == 6 and wrt == "y":
-        return 24 * sqrt(7) * y * (-5 * x**2 - 5 * y**2 + 5 * (x**2 + y**2) ** 2 + 1)
+        return (
+            24
+            * sqrt(7)
+            * y
+            * (-5 * x**2 - 5 * y**2 + 5 * (x**2 + y**2) ** 2 + 1)
+        )
 
     # Derivatives for j = 25
     if m == 2 and n == 6 and wrt == "x":
@@ -403,7 +437,14 @@ def zernike_derivative_cartesian(
             120
             * x
             * y
-            * (7 * x**4 + 14 * x**2 * y**2 - 8 * x**2 + 7 * y**4 - 8 * y**2 + 2)
+            * (
+                7 * x**4
+                + 14 * x**2 * y**2
+                - 8 * x**2
+                + 7 * y**4
+                - 8 * y**2
+                + 2
+            )
         )
     if m == -1 and n == 7 and wrt == "y":
         return (
@@ -438,7 +479,14 @@ def zernike_derivative_cartesian(
             120
             * x
             * y
-            * (7 * x**4 + 14 * x**2 * y**2 - 8 * x**2 + 7 * y**4 - 8 * y**2 + 2)
+            * (
+                7 * x**4
+                + 14 * x**2 * y**2
+                - 8 * x**2
+                + 7 * y**4
+                - 8 * y**2
+                + 2
+            )
         )
 
     # Derivatives for j = 33
@@ -506,11 +554,17 @@ def zernike_derivative_cartesian(
     # Derivatives for j = 36
     if m == -8 and n == 8 and wrt == "x":
         return (
-            24 * sqrt(2) * y * (7 * x**6 - 35 * x**4 * y**2 + 21 * x**2 * y**4 - y**6)
+            24
+            * sqrt(2)
+            * y
+            * (7 * x**6 - 35 * x**4 * y**2 + 21 * x**2 * y**4 - y**6)
         )
     if m == -8 and n == 8 and wrt == "y":
         return (
-            24 * sqrt(2) * x * (x**6 - 21 * x**4 * y**2 + 35 * x**2 * y**4 - 7 * y**6)
+            24
+            * sqrt(2)
+            * x
+            * (x**6 - 21 * x**4 * y**2 + 35 * x**2 * y**4 - 7 * y**6)
         )
 
     # Derivatives for j = 37
@@ -742,11 +796,17 @@ def zernike_derivative_cartesian(
     # Derivatives for j = 44
     if m == 8 and n == 8 and wrt == "x":
         return (
-            24 * sqrt(2) * x * (x**6 - 21 * x**4 * y**2 + 35 * x**2 * y**4 - 7 * y**6)
+            24
+            * sqrt(2)
+            * x
+            * (x**6 - 21 * x**4 * y**2 + 35 * x**2 * y**4 - 7 * y**6)
         )
     if m == 8 and n == 8 and wrt == "y":
         return (
-            24 * sqrt(2) * y * (-7 * x**6 + 35 * x**4 * y**2 - 21 * x**2 * y**4 + y**6)
+            24
+            * sqrt(2)
+            * y
+            * (-7 * x**6 + 35 * x**4 * y**2 - 21 * x**2 * y**4 + y**6)
         )
 
     # Derivatives for j = 45
@@ -2005,7 +2065,13 @@ def zernike_derivative_cartesian(
                 * (-275 * x**2 - 275 * y**2 + 198 * (x**2 + y**2) ** 2 + 90)
                 * (x**6 - 7 * x**4 * y**2 + 7 * x**2 * y**4 - y**6)
                 - (-110 * x**2 - 110 * y**2 + 66 * (x**2 + y**2) ** 2 + 45)
-                * (x**8 - 28 * x**6 * y**2 + 70 * x**4 * y**4 - 28 * x**2 * y**6 + y**8)
+                * (
+                    x**8
+                    - 28 * x**6 * y**2
+                    + 70 * x**4 * y**4
+                    - 28 * x**2 * y**6
+                    + y**8
+                )
             )
             / (x**2 + y**2)
         )
@@ -2020,7 +2086,13 @@ def zernike_derivative_cartesian(
                 * (-275 * x**2 - 275 * y**2 + 198 * (x**2 + y**2) ** 2 + 90)
                 * (x**6 - 7 * x**4 * y**2 + 7 * x**2 * y**4 - y**6)
                 + (-110 * x**2 - 110 * y**2 + 66 * (x**2 + y**2) ** 2 + 45)
-                * (x**8 - 28 * x**6 * y**2 + 70 * x**4 * y**4 - 28 * x**2 * y**6 + y**8)
+                * (
+                    x**8
+                    - 28 * x**6 * y**2
+                    + 70 * x**4 * y**4
+                    - 28 * x**2 * y**6
+                    + y**8
+                )
             )
             / (x**2 + y**2)
         )
@@ -2425,7 +2497,13 @@ def zernike_derivative_cartesian(
                 * (-110 * x**2 - 110 * y**2 + 66 * (x**2 + y**2) ** 2 + 45)
                 * (x**6 - 7 * x**4 * y**2 + 7 * x**2 * y**4 - y**6)
                 + (-275 * x**2 - 275 * y**2 + 198 * (x**2 + y**2) ** 2 + 90)
-                * (x**8 - 28 * x**6 * y**2 + 70 * x**4 * y**4 - 28 * x**2 * y**6 + y**8)
+                * (
+                    x**8
+                    - 28 * x**6 * y**2
+                    + 70 * x**4 * y**4
+                    - 28 * x**2 * y**6
+                    + y**8
+                )
             )
             / (x**2 + y**2)
         )
@@ -2440,7 +2518,13 @@ def zernike_derivative_cartesian(
                 * (-110 * x**2 - 110 * y**2 + 66 * (x**2 + y**2) ** 2 + 45)
                 * (x**6 - 7 * x**4 * y**2 + 7 * x**2 * y**4 - y**6)
                 + (-275 * x**2 - 275 * y**2 + 198 * (x**2 + y**2) ** 2 + 90)
-                * (x**8 - 28 * x**6 * y**2 + 70 * x**4 * y**4 - 28 * x**2 * y**6 + y**8)
+                * (
+                    x**8
+                    - 28 * x**6 * y**2
+                    + 70 * x**4 * y**4
+                    - 28 * x**2 * y**6
+                    + y**8
+                )
             )
             / (x**2 + y**2)
         )
@@ -3189,7 +3273,13 @@ def zernike_derivative_cartesian(
                     - 858 * (x**2 + y**2) ** 2
                     - 165
                 )
-                * (x**8 - 28 * x**6 * y**2 + 70 * x**4 * y**4 - 28 * x**2 * y**6 + y**8)
+                * (
+                    x**8
+                    - 28 * x**6 * y**2
+                    + 70 * x**4 * y**4
+                    - 28 * x**2 * y**6
+                    + y**8
+                )
             )
             / (x**2 + y**2)
         )
@@ -3216,7 +3306,13 @@ def zernike_derivative_cartesian(
                     - 858 * (x**2 + y**2) ** 2
                     - 165
                 )
-                * (x**8 - 28 * x**6 * y**2 + 70 * x**4 * y**4 - 28 * x**2 * y**6 + y**8)
+                * (
+                    x**8
+                    - 28 * x**6 * y**2
+                    + 70 * x**4 * y**4
+                    - 28 * x**2 * y**6
+                    + y**8
+                )
             )
             / (x**2 + y**2)
         )
@@ -3663,7 +3759,13 @@ def zernike_derivative_cartesian(
                     - 1287 * (x**2 + y**2) ** 2
                     - 165
                 )
-                * (x**8 - 28 * x**6 * y**2 + 70 * x**4 * y**4 - 28 * x**2 * y**6 + y**8)
+                * (
+                    x**8
+                    - 28 * x**6 * y**2
+                    + 70 * x**4 * y**4
+                    - 28 * x**2 * y**6
+                    + y**8
+                )
             )
             / (x**2 + y**2)
         )
@@ -3690,7 +3792,13 @@ def zernike_derivative_cartesian(
                     - 1287 * (x**2 + y**2) ** 2
                     - 165
                 )
-                * (x**8 - 28 * x**6 * y**2 + 70 * x**4 * y**4 - 28 * x**2 * y**6 + y**8)
+                * (
+                    x**8
+                    - 28 * x**6 * y**2
+                    + 70 * x**4 * y**4
+                    - 28 * x**2 * y**6
+                    + y**8
+                )
             )
             / (x**2 + y**2)
         )
@@ -3811,7 +3919,12 @@ def zernike_derivative_cartesian(
             * (x**2 + y**2) ** (9 / 2)
             * (
                 x
-                * (-2366 * x**2 - 2366 * y**2 + 1575 * (x**2 + y**2) ** 2 + 858)
+                * (
+                    -2366 * x**2
+                    - 2366 * y**2
+                    + 1575 * (x**2 + y**2) ** 2
+                    + 858
+                )
                 * sin(11 * atan2(y, x))
                 - 11
                 * y
@@ -3830,7 +3943,12 @@ def zernike_derivative_cartesian(
                 * (-182 * x**2 - 182 * y**2 + 105 * (x**2 + y**2) ** 2 + 78)
                 * cos(11 * atan2(y, x))
                 + y
-                * (-2366 * x**2 - 2366 * y**2 + 1575 * (x**2 + y**2) ** 2 + 858)
+                * (
+                    -2366 * x**2
+                    - 2366 * y**2
+                    + 1575 * (x**2 + y**2) ** 2
+                    + 858
+                )
                 * sin(11 * atan2(y, x))
             )
         )
@@ -4489,7 +4607,12 @@ def zernike_derivative_cartesian(
             * (x**2 + y**2) ** (9 / 2)
             * (
                 x
-                * (-2366 * x**2 - 2366 * y**2 + 1575 * (x**2 + y**2) ** 2 + 858)
+                * (
+                    -2366 * x**2
+                    - 2366 * y**2
+                    + 1575 * (x**2 + y**2) ** 2
+                    + 858
+                )
                 * cos(11 * atan2(y, x))
                 + 11
                 * y
@@ -4508,7 +4631,12 @@ def zernike_derivative_cartesian(
                 * (-182 * x**2 - 182 * y**2 + 105 * (x**2 + y**2) ** 2 + 78)
                 * sin(11 * atan2(y, x))
                 + y
-                * (-2366 * x**2 - 2366 * y**2 + 1575 * (x**2 + y**2) ** 2 + 858)
+                * (
+                    -2366 * x**2
+                    - 2366 * y**2
+                    + 1575 * (x**2 + y**2) ** 2
+                    + 858
+                )
                 * cos(11 * atan2(y, x))
             )
         )
@@ -4552,4 +4680,6 @@ def zernike_derivative_cartesian(
         )
 
     # Raise value error if we have not returned yet
-    raise ValueError("No pre-computed derivative available for given arguments!")
+    raise ValueError(
+        "No pre-computed derivative available for given arguments!"
+    )
