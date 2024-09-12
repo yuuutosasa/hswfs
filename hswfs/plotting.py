@@ -77,7 +77,7 @@ def plot_shifts(
 
     # Determine a shrinkage factor to map the relative shifts into the right
     # reference frame (i.e., scale to the size of a subaperture in the plot)
-    factor = grid_size
+    factor = 1 / grid_size
 
     # Plot the observed position for each subapertures, which differs from the
     # center of the subaperture by the given shift vector
