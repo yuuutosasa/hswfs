@@ -189,8 +189,8 @@ def cut_to_circle(shifts: np.ndarray) -> np.ndarray:
 
 
 def cut_out_circle(
-        shifts: np.ndarray, 
-        ratio,
+    shifts: np.ndarray,
+    ratio,
 ) -> np.ndarray:
     """
     Cuts out a circle from a ndarray(N, N, 2) and fills the inside with NaN.

@@ -191,9 +191,9 @@ class HSWFS:
 
         # Exclude nan from p vector and corresponding column from d
         nanidx = np.isnan(p)
-        p = p[~nanidx] 
+        p = p[~nanidx]
         d = d[:, ~nanidx]
-        
+
         # ---------------------------------------------------------------------
         # Find the Zernike coefficients by solving a linear equation system
         # ---------------------------------------------------------------------
