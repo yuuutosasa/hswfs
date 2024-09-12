@@ -203,6 +203,9 @@ def cut_out_circle(
       A new numpy array with the same shape as shifts, where the inside of the circle
       is filled with NaN.
     """
+    # Ensure that the ratio is within the valid range [0, 1]
+    assert 0 <= ratio <= 1, "ratio must be between 0 and 1"
+
     size = shifts.shape[0]
 
     center = (size / 2 - 0.5, size / 2 - 0.5)
